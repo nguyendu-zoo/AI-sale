@@ -1,0 +1,16 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+.tools/
+.pnpm-store/
+*.log
+*.tsbuildinfo
+playwright-report/
+test-results/
+*.pem
+*.key
+credentials*.json
+service-account*.json

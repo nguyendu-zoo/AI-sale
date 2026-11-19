@@ -1,0 +1,45 @@
+{
+  "name": "ai-sales-agent",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.11.0",
+  "engines": {
+    "node": ">=22.12.0 <23 || >=24"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @sales/api --filter @ai-sales/web dev",
+    "build": "pnpm --filter @sales/shared build && pnpm --filter @sales/api build && pnpm --filter @ai-sales/web build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "eslint apps packages scripts --max-warnings 0",
+    "test": "pnpm --filter @sales/api test",
+    "test:integration": "pnpm --filter @sales/api test:integration",
+    "test:browser": "node scripts/run-api.mjs browser",
+    "test:browser:pages": "node scripts/page-settings-browser.mjs",
+    "test:launcher": "node --test scripts/run-api.test.mjs",
+    "db:generate": "node scripts/run-api.mjs generate",
+    "db:migrate": "node scripts/run-api.mjs migrate",
+    "db:seed": "node scripts/run-api.mjs seed",
+    "infra:up": "docker compose up -d --wait",
+    "infra:stop": "docker compose stop",
+    "setup:env": "node scripts/setup-env.mjs",
+    "check:env": "powershell -ExecutionPolicy Bypass -File scripts/check-environment.ps1"
+  },
+  "pnpm": {
+    "overrides": {
+      "path-to-regexp@>=8 <8.4.0": "8.4.0",
+      "js-yaml@>=4 <4.3.2": "4.3.2",
+      "lodash@<4.18.0": "4.18.0",
+      "file-type@>=20 <21.3.2": "21.3.2",
+      "uuid@>=9 <11.1.1": "11.1.1",
+      "multer@<2.5.0": "2.5.0"
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "9.26.0",
+    "eslint": "9.26.0",
+    "globals": "16.1.0",
+    "playwright-core": "1.65.1",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.32.0"
+  }
+}
